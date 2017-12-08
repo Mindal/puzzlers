@@ -7,10 +7,15 @@ package ru.bogdanov.puzzlers.day3;
  * So, the first few squares' values are chosen as follows:
  * <p>
  * Square 1 starts with the value 1.
+ * <p>
  * Square 2 has only one adjacent filled square (with value 1), so it also stores 1.
+ * <p>
  * Square 3 has both of the above squares as neighbors and stores the sum of their values, 2.
+ * <p>
  * Square 4 has all three of the aforementioned squares as neighbors and stores the sum of their values, 4.
+ * <p>
  * Square 5 only has the first and fourth squares as neighbors, so it gets the value 5.
+ * <p>
  * Once a square is written, its value does not change. Therefore, the first few squares would receive the following values:
  * <p>
  * 147  142  133  122   59 <p>
@@ -49,28 +54,28 @@ public class Puzzler3B {
         int counter = 0;
         while (increment <= length * length) {
             while (counter != 2 * currentHalf - 1) {
-                matr[str][column] = getAncCheckValue(matr, str, column, input);
+                matr[str][column] = getAndCheckValue(matr, str, column, input);
                 increment++;
                 str--;
                 counter++;
             }
             counter = 0;
             while (counter != 2 * currentHalf) {
-                matr[str][column] = getAncCheckValue(matr, str, column, input);
+                matr[str][column] = getAndCheckValue(matr, str, column, input);
                 increment++;
                 column--;
                 counter++;
             }
             counter = 0;
             while (counter != 2 * currentHalf) {
-                matr[str][column] = getAncCheckValue(matr, str, column, input);
+                matr[str][column] = getAndCheckValue(matr, str, column, input);
                 increment++;
                 str++;
                 counter++;
             }
             counter = 0;
             while (counter != 2 * currentHalf + 1) {
-                matr[str][column] = getAncCheckValue(matr, str, column, input);
+                matr[str][column] = getAndCheckValue(matr, str, column, input);
                 increment++;
                 column++;
                 counter++;
@@ -81,7 +86,7 @@ public class Puzzler3B {
 //        printMatr(matr);
     }
 
-    private static int getAncCheckValue(int[][] matr, int str, int column, int input) {
+    private static int getAndCheckValue(int[][] matr, int str, int column, int input) {
         int upLeft = 0;
         try {
             upLeft = matr[str - 1][column - 1];

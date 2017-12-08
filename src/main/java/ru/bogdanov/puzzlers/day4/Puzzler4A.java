@@ -14,7 +14,10 @@ import ru.bogdanov.puzzlers.Utils;
  *
  * For example:
  *
- * aa bb cc dd ee is valid. aa bb cc dd aa is not valid - the word aa appears more than once. aa bb
+ * aa bb cc dd ee is valid.
+ * <p>
+ * aa bb cc dd aa is not valid - the word aa appears more than once. aa bb
+ * <p>
  * cc dd aaa is valid - aa and aaa count as different words. The system's full passphrase list is
  * available as your puzzle input. How many passphrases are valid?
  */

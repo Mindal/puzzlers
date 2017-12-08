@@ -13,9 +13,13 @@ package ru.bogdanov.puzzlers.day3;
  * For example:
  * <p>
  * Data from square 1 is carried 0 steps, since it's at the access port.
+ * <p>
  * Data from square 12 is carried 3 steps, such as: down, left, left.
+ * <p>
  * Data from square 23 is carried only 2 steps: up twice.
+ * <p>
  * Data from square 1024 must be carried 31 steps.
+ * <p>
  * How many steps are required to carry the data from the square identified in your puzzle input all the way to the access port?
  */
 public class Puzzler3A {

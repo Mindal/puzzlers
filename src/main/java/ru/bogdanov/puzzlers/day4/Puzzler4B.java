@@ -15,10 +15,13 @@ import ru.bogdanov.puzzlers.Utils;
  *
  * For example:
  *
- * abcde fghij is a valid passphrase. abcde xyz ecdab is not valid - the letters from the third word
- * can be rearranged to form the first word. a ab abc abd abf abj is a valid passphrase, because all
- * letters need to be used when forming another word. iiii oiii ooii oooi oooo is valid. oiii ioii
- * iioi iiio is not valid - any of these words can be rearranged to form any other word. Under this
+ * abcde fghij is a valid passphrase.<p>
+ * abcde xyz ecdab is not valid - the letters from the third word can be rearranged to form the first word.<p>
+ * a ab abc abd abf abj is a valid passphrase, because all
+ * letters need to be used when forming another word.
+ * iiii oiii ooii oooi oooo is valid.<p>
+ * oiii ioii iioi iiio is not valid - any of these words can be rearranged to form any other word.<p>
+ * Under this
  * new system policy, how many passphrases are valid?
  */
 public class Puzzler4B {
