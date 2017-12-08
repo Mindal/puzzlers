@@ -1,9 +1,8 @@
 package ru.bogdanov.puzzlers.day5;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.io.IOException;
+import java.util.List;
+import ru.bogdanov.puzzlers.Utils;
 
 /**
  * An urgent interrupt arrives from the CPU: it's trapped in a maze of jump instructions, and it
@@ -39,15 +38,8 @@ import java.util.Scanner;
  */
 public class Puzzler5A {
 
-  public static void main(String[] args) throws FileNotFoundException {
-    String pathname = "C:\\Users\\Andrei_Bogdanov\\IdeaProjects\\puzzlers\\src\\main\\java\\ru\\bogdanov\\puzzlers\\fifth\\input.txt";
-    Scanner scanner = new Scanner(new File(
-        pathname));
-    ArrayList<Integer> game = new ArrayList<>();
-    while (scanner.hasNext()) {
-      game.add(scanner.nextInt());
-    }
-    scanner.close();
+  public static void main(String[] args) throws IOException {
+    List<Integer> game = Utils.getAllIntegerLines("day5/input.txt");
     int i = 0;
     int counter = 0;
     while (i < game.size()) {

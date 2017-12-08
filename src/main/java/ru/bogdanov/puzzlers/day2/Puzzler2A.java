@@ -1,19 +1,15 @@
 package ru.bogdanov.puzzlers.day2;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import ru.bogdanov.puzzlers.Utils;
 
 public class Puzzler2A {
     public static void main(String[] args) throws IOException {
-        String input = "C:\\Users\\Python\\IdeaProjects\\puzzlers\\src\\main\\java\\ru\\bogdanov\\puzzlers\\second\\input1.txt";
-        Path path = Paths.get(input);
+        List<String> strings = Utils.getAllLines("day2/input.txt");
         int result = 0;
-        List<String> strings = Files.readAllLines(path);
         for (String s : strings) {
             String[] split = s.split("\t");
             int min = getMin(split);

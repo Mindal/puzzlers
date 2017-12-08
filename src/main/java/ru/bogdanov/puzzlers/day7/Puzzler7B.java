@@ -1,17 +1,15 @@
 package ru.bogdanov.puzzlers.day7;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import ru.bogdanov.puzzlers.Utils;
 
 public class Puzzler7B {
     public static void main(String[] args) throws IOException {
         Map<String, Node> nodes = new HashMap<>();
-        String path = "C:\\Users\\Python\\IdeaProjects\\puzzlers\\src\\main\\java\\ru\\bogdanov\\puzzlers\\seventh\\input7.txt";
-        List<String> input = Files.readAllLines(Paths.get(path));
+        List<String> input = Utils.getAllLines("day7/input.txt");
         input.forEach(s -> {
             String[] split = s.split("->");
 
@@ -79,6 +77,6 @@ public class Puzzler7B {
 
 
     private static int getWeight(String s) {
-        return Integer.parseInt(s.substring(s.indexOf("(") + 1, s.indexOf(")")));
+        return Integer.parseInt(s.substring(s.indexOf('(') + 1, s.indexOf(')')));
     }
 }

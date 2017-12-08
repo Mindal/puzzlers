@@ -1,11 +1,10 @@
 package ru.bogdanov.puzzlers.day4;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import ru.bogdanov.puzzlers.Utils;
 
 /**
  * --- Part Two ---
@@ -25,8 +24,7 @@ import java.util.List;
 public class Puzzler4B {
 
   public static void main(String[] args) throws IOException {
-    List<String> strings = Files.readAllLines(Paths.get(
-        "C:\\Users\\Andrei_Bogdanov\\IdeaProjects\\puzzlers\\src\\main\\java\\ru\\bogdanov\\puzzlers\\fourth\\input4.txt"));
+    List<String> strings = Utils.getAllLines("day4/input.txt");
     System.out
         .println(strings.stream().map(Puzzler4B::isValid).filter(aBoolean -> aBoolean).count());
   }

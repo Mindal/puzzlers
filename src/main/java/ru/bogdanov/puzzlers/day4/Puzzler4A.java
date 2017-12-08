@@ -1,10 +1,9 @@
 package ru.bogdanov.puzzlers.day4;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.HashSet;
 import java.util.List;
+import ru.bogdanov.puzzlers.Utils;
 
 /**
  * A new system policy has been put in place that requires all accounts to use a passphrase instead
@@ -22,8 +21,7 @@ import java.util.List;
 public class Puzzler4A {
 
   public static void main(String[] args) throws IOException {
-    List<String> strings = Files.readAllLines(Paths.get(
-        "C:\\Users\\Andrei_Bogdanov\\IdeaProjects\\puzzlers\\src\\main\\java\\ru\\bogdanov\\puzzlers\\fourth\\input4.txt"));
+    List<String> strings = Utils.getAllLines("day4/input.txt");
     System.out
         .println(strings.stream().map(Puzzler4A::isValid).filter(aBoolean -> aBoolean).count());
   }
