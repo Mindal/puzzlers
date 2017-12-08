@@ -1,4 +1,4 @@
-package ru.bogdanov.puzzlers.fourth;
+package ru.bogdanov.puzzlers.day4;
 
 import java.io.IOException;
 import java.nio.file.Files;

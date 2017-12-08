@@ -1,4 +1,4 @@
-package ru.bogdanov.puzzlers.second;
+package ru.bogdanov.puzzlers.day2;
 
 import ru.bogdanov.puzzlers.NotFoundException;
 

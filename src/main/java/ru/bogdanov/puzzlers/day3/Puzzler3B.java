@@ -1,4 +1,4 @@
-package ru.bogdanov.puzzlers.third;
+package ru.bogdanov.puzzlers.day3;
 
 /**
  * As a stress test on the system, the programs here clear the grid and then store the value 1 in square 1.

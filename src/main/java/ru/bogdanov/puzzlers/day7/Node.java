@@ -1,4 +1,4 @@
-package ru.bogdanov.puzzlers.seventh;
+package ru.bogdanov.puzzlers.day7;
 
 import java.util.ArrayList;
 import java.util.List;

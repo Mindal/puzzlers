@@ -1,4 +1,4 @@
-package ru.bogdanov.puzzlers.fifth;
+package ru.bogdanov.puzzlers.day5;
 
 import java.io.File;
 import java.io.FileNotFoundException;
