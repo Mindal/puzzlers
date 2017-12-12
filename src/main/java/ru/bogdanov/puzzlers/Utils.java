@@ -12,13 +12,17 @@ public class Utils {
     throw new AssertionError("Shouldn't be instantiated");
   }
 
-  public static List<String> getAllLines(String path) throws IOException {
-    ClassLoader classLoader = Utils.class.getClassLoader();
-    File file = new File(classLoader.getResource(path).getFile());
-    return Files.readAllLines(file.toPath());
+  public static List<String> getAllLines(String path)  {
+    try {
+      ClassLoader classLoader = Utils.class.getClassLoader();
+      File file = new File(classLoader.getResource(path).getFile());
+      return Files.readAllLines(file.toPath());
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
   }
 
-  public static String getLine(String path) throws IOException{
+  public static String getLine(String path) {
     List<String> allLines = getAllLines(path);
     if(allLines.size() > 1){
       System.out.println(allLines.size());
@@ -30,7 +34,7 @@ public class Utils {
     return allLines.get(0);
   }
 
-  public static List<Integer> getAllIntegerLines(String path) throws IOException{
+  public static List<Integer> getAllIntegerLines(String path){
     return getAllLines(path).stream().map(Integer::parseInt).collect(Collectors.toList());
   }
 
