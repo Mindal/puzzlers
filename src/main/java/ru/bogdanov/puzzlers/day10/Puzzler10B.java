@@ -37,7 +37,13 @@ import java.util.stream.IntStream;
 @SuppressWarnings("ALL")
 public class Puzzler10B {
     public static void main(String[] args) throws IOException {
-        int[] lengths = getLenghts();
+        String knotHash = getKnotHash(Utils.getLine("day10/input.txt"));
+        System.out.println(knotHash);
+        System.out.println(knotHash.length());
+    }
+
+    public static String getKnotHash(String input) {
+        int[] lengths = getLenghts(input);
         int skipSize = 0;
         int startIndex = 0;
         int[] list = IntStream.range(0, 256).toArray();
@@ -57,9 +63,14 @@ public class Puzzler10B {
         for (int i = 0; i < 16; i++) {
             blocks[i] = getBlocks(list, i * 16, (i + 1) * 16);
         }
-        StringBuilder finalHash = new StringBuilder();
 
-        System.out.println(Arrays.stream(blocks).mapToObj(Integer::toHexString).reduce((s, s2) -> s + s2).orElse(null));
+        return Arrays.stream(blocks).mapToObj(i -> {
+            String string = Integer.toHexString(i);
+            while (string.length() < 2){
+                string = "0" + string;
+            }
+            return string;
+        }).reduce((s, s2) -> s + s2).orElse(null);
     }
 
     private static int getBlocks(int[] list, int start, int end) {
@@ -71,8 +82,7 @@ public class Puzzler10B {
 
     }
 
-    private static int[] getLenghts() throws IOException {
-        String input = Utils.getLine("day10/input.txt");
+    private static int[] getLenghts(String input) {
         List<Integer> inputInteger = new ArrayList<>();
         for (char ch : input.toCharArray()) {
             inputInteger.add((int) ch);
