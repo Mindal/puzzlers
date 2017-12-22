@@ -9,59 +9,81 @@ import java.util.Map;
 public class Puzzler18A {
     public static void main(String[] args) {
         List<String> input = Utils.getAllLines("day18/input.txt");
-        Map<Character, Integer> values = new HashMap<>();
+        Map<Character, Long> values = new HashMap<>();
+        initMap(values);
         int numOfInstructions = 0;
+        Long result = 0L;
+        label:
         while (true) {
             String string = input.get(numOfInstructions);
             String[] split = string.split(" ");
+            Character in = split[1].charAt(0);
+            String out = "";
+            if (split.length == 3) {
+                out = split[2];
+            }
             String instruction = split[0];
             switch (instruction) {
-                case "set": {
-                    Character in = split[1].charAt(0);
-                    String out = split[2];
+                case "set":
                     if (isInteger(out)) {
-                        values.merge(in, Integer.parseInt(out), (integer, integer2) -> integer2);
+                        values.put(in, Long.valueOf(out));
                     } else {
-                        values.merge(in, values.getOrDefault(out.charAt(0), 0), (integer, integer2) -> integer2);
+                        values.put(in, values.get(out.charAt(0)));
                     }
-
+                    numOfInstructions++;
                     break;
-                }
-                case "add": {
-                    Character in = split[1].charAt(0);
-                    String out = split[2];
+                case "add":
                     if (isInteger(out)) {
-                        values.merge(in, Integer.parseInt(out), (integer, integer2) -> integer + integer2);
+                        values.put(in, values.get(in) + Long.valueOf(out));
                     } else {
-                        values.merge(in, values.getOrDefault(out.charAt(0), 0), (integer, integer2) -> integer + integer2);
+                        values.put(in, values.get(in) + values.get(out.charAt(0)));
                     }
-
+                    numOfInstructions++;
                     break;
-
-                }
-                case "mul": {
-                    Character in = split[1].charAt(0);
-                    String out = split[2];
-                    values.merge(in, Integer.parseInt(out), (integer, integer2) -> integer + integer2);
+                case "mul":
+                    if (isInteger(out)) {
+                        values.put(in, values.get(in) * Long.valueOf(out));
+                    } else {
+                        values.put(in, values.get(in) * values.get(out.charAt(0)));
+                    }
+                    numOfInstructions++;
                     break;
-                }
-                case "mod": {
+                case "mod":
+                    if (isInteger(out)) {
+                        values.put(in, values.get(in) % Long.valueOf(out));
+                    } else {
+                        values.put(in, values.get(in) % values.get(out.charAt(0)));
+                    }
+                    numOfInstructions++;
                     break;
-                }
-                case "rcv": {
+                case "rcv":
+                    if (values.get(in) != 0) break label;
+                    else numOfInstructions++;
                     break;
-                }
-                case "jgz": {
+                case "jgz":
+                    if (values.get(in) > 0) {
+                        if (isInteger(out)) {
+                            numOfInstructions += Integer.parseInt(out);
+                        } else {
+                            numOfInstructions += values.get(out.charAt(0));
+                        }
+                    } else numOfInstructions++;
                     break;
-                }
-                case "snd": {
+                case "snd":
+                    result = values.get(in);
+                    numOfInstructions++;
                     break;
-                }
                 default:
                     throw new RuntimeException("Incorrect instruction");
             }
-            break;
+        }
+        System.out.println(result);
+    }
 
+    private static void initMap(Map<Character, Long> values) {
+        String characters = "iapbf";
+        for (char c : characters.toCharArray()) {
+            values.put(c, 0L);
         }
     }
 
